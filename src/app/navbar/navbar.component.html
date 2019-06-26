@@ -1,0 +1,36 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo" [containerInside]="false">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" routerLink="" routerLinkActive="active"><mdb-icon fas icon="sticky-note"></mdb-icon> NoteApp</a></mdb-navbar-brand>
+  
+    <!-- Collapsible content -->
+    <links>
+  
+      <!-- Links -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" *ngIf="current">
+          <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="user"></mdb-icon> {{current.name}}</a>
+        </li>
+        <li class="nav-item" *ngIf="isUserLoggedIn">
+          <a class="nav-link waves-light" routerLink="notes" routerLinkActive="active" mdbWavesEffect><mdb-icon fas icon="tasks"></mdb-icon> My Notes</a>
+        </li>
+        <li class="nav-item" *ngIf="isUserLoggedIn">
+          <a class="nav-link waves-light" (click)="logoutUser()" mdbWavesEffect><mdb-icon fas icon="sign-out-alt"></mdb-icon> Logout</a>
+        </li>
+
+        <li class="nav-item" *ngIf="!isUserLoggedIn">
+          <a class="nav-link waves-light" routerLink="login" routerLinkActive="active" mdbWavesEffect><mdb-icon fas icon="sign-in-alt"></mdb-icon> Login</a>
+        </li>
+        <li class="nav-item" *ngIf="!isUserLoggedIn">
+          <a class="nav-link waves-light" routerLink="register" routerLinkActive="active" mdbWavesEffect><mdb-icon fas icon="user-plus"></mdb-icon> Register</a>
+        </li>
+  
+  
+      </ul>
+      <!-- Links -->
+    </links>
+    <!-- Collapsible content -->
+  
+  </mdb-navbar>
+  <!--/.Navbar-->

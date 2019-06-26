@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="text-center">
+    <h1>Notes List</h1><hr>
+    <a class="btn btn-primary btn-lg" routerLink="new" routerLinkActive="active">Create new</a>
+    <div *ngIf="deleted" class="alert alert-danger" role="alert">
+        <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        Note deleted successfully!
+    </div>
+  </div>
+  <div *ngIf="notes" class="row">
+        <div *ngFor="let note of notes" class="col-md-4">
+            <mdb-card>
+              <!--Card image-->
+              <mdb-card-img src="https://images.pexels.com/photos/315790/pexels-photo-315790.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Card image cap"></mdb-card-img>
+              <!--Card content-->
+              <mdb-card-body>
+            
+                <!--Title-->
+                <mdb-card-title>
+                  <h4>{{note.title}}</h4>
+                </mdb-card-title>
+            
+                <!--Text-->
+                <mdb-card-text> {{note.content}}
+                </mdb-card-text>
+            
+                <button type="button" mdbBtn color="default" (click)="openModal(note)"
+  mdbWavesEffect>Edit</button>
+                <button mdbBtn color="danger" (click)="onRemove($event,note.id)" mdbWavesEffect>Delete</button>
+              </mdb-card-body>
+            </mdb-card>
+          </div>
+    
+  </div>
+  
+</div>
