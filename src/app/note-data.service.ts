@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Note } from './model/note';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,13 @@ export class NoteDataService {
 
   getAll(): Observable<Note>{
     return this.http.get<Note>(this.ROOT_URL);
+  }
+
+  updateNote (title: string, content: string, id: number): Observable<Note> {
+    return this.http.put<Note>(`${this.ROOT_URL}/${id}/edit`, { title, content })
+      .pipe(
+        
+      );
   }
 
   show(id: number) {

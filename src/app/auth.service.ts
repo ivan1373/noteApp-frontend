@@ -21,7 +21,6 @@ export class AuthService {
   }
 
   
-
   public get currentTokenValue(): Token {
     return this.currentTokenSubject.value;
   }
@@ -38,6 +37,7 @@ export class AuthService {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('accessToken', JSON.stringify(token));
                 this.currentTokenSubject.next(token);
+                //window.location.reload();
             }
 
             return token;
@@ -57,6 +57,6 @@ export class AuthService {
    //localStorage.removeItem('currentUser');
     localStorage.removeItem('accessToken');
     this.currentTokenSubject.next(null);
-    window.location.reload();
+    //window.location.reload();
 }
 }

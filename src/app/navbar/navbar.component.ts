@@ -11,22 +11,15 @@ import { User } from '../model/user';
 })
 export class NavbarComponent implements OnInit {
 
-  current: User;
-  isUserLoggedIn = false;
+  //current: User;
 
   constructor(private router: Router,
     private authenticationService: AuthService) {
-      if(this.authenticationService.currentTokenValue !== null)
-      {
-        this.isUserLoggedIn = true;
-      }
+      
      }
 
   ngOnInit() {
-    if(this.authenticationService.currentTokenValue)
-    {
-      this.setUser();
-    }
+    
     
   }
 

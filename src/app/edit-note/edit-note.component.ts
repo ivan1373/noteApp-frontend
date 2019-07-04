@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NoteDataService } from '../note-data.service';
 import { Note } from '../model/note';
 import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-edit-note',
@@ -16,6 +17,8 @@ export class EditNoteComponent implements OnInit {
 
   modalRef: MDBModalRef;
 
+  action = new Subject();
+
   constructor(private formBuilder: FormBuilder, private nds: NoteDataService, private modalService: MDBModalService) { }
 
   ngOnInit() {
@@ -27,8 +30,16 @@ export class EditNoteComponent implements OnInit {
 
   get f() { return this.notesForm.controls; }
 
-  updateNote() {
-    console.log(this.notesForm.value);
+  editNote() {
+    return this.nds.updateNote(this.f.title.value, this.f.content.value, this.note.id).subscribe((data:Note) => {
+      this.note = data;
+      this.action.next(true);
+      this.hide();
+    },
+    error => {console.log(error);
+              this.action.next(false);
+            }
+      );
   }
 
   hide() {

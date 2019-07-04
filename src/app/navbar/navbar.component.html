@@ -9,20 +9,20 @@
   
       <!-- Links -->
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item" *ngIf="current">
+        <!--<li class="nav-item" *ngIf="authenticationService.currentTokenValue !== null && current">
           <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="user"></mdb-icon> {{current.name}}</a>
-        </li>
-        <li class="nav-item" *ngIf="isUserLoggedIn">
+        </li>-->
+        <li class="nav-item" *ngIf="authenticationService.currentTokenValue !== null">
           <a class="nav-link waves-light" routerLink="notes" routerLinkActive="active" mdbWavesEffect><mdb-icon fas icon="tasks"></mdb-icon> My Notes</a>
         </li>
-        <li class="nav-item" *ngIf="isUserLoggedIn">
+        <li class="nav-item" *ngIf="authenticationService.currentTokenValue !== null">
           <a class="nav-link waves-light" (click)="logoutUser()" mdbWavesEffect><mdb-icon fas icon="sign-out-alt"></mdb-icon> Logout</a>
         </li>
 
-        <li class="nav-item" *ngIf="!isUserLoggedIn">
+        <li class="nav-item" *ngIf="authenticationService.currentTokenValue === null">
           <a class="nav-link waves-light" routerLink="login" routerLinkActive="active" mdbWavesEffect><mdb-icon fas icon="sign-in-alt"></mdb-icon> Login</a>
         </li>
-        <li class="nav-item" *ngIf="!isUserLoggedIn">
+        <li class="nav-item" *ngIf="authenticationService.currentTokenValue === null">
           <a class="nav-link waves-light" routerLink="register" routerLinkActive="active" mdbWavesEffect><mdb-icon fas icon="user-plus"></mdb-icon> Register</a>
         </li>
   

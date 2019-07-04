@@ -14,6 +14,7 @@ export class NotesComponent implements OnInit {
   modalRef: MDBModalRef;
   notes: Note;
   deleted = false;
+  updated = false;
 
   modalOptions = {
     backdrop: true,
@@ -31,6 +32,8 @@ export class NotesComponent implements OnInit {
   ngOnInit() {
     this.showNotes();
   }
+
+  
 
   showNotes() {
     return this.nds.getAll().subscribe(
@@ -60,15 +63,18 @@ export class NotesComponent implements OnInit {
     
   }
 
+
   closeAlert() {
     this.deleted = false;
+    this.updated = false;
   }
 
   openModal(note: any) {
     //console.log(note);
     this.modalOptions["data"] = {note};
     this.modalRef = this.modalService.show(EditNoteComponent,  this.modalOptions);
-    
+
+    this.modalRef.content.action.subscribe( (result: boolean) => { this.updated = result; this.showNotes(); });
   }
 
 }

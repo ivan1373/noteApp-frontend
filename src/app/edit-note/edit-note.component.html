@@ -5,7 +5,7 @@
     </button>
     <h4 class="modal-title w-100" id="myModalLabel">Edit your Note</h4>
   </div>
-  <form [formGroup]="notesForm" [hidden]="success" (ngSubmit)="updateNote()">
+  <form [formGroup]="notesForm" [hidden]="success" (ngSubmit)="editNote()">
   <div class="modal-body">
       <div class="md-form form-group mt-5">
         <input mdbInput type="text" class="form-control" formControlName="title">

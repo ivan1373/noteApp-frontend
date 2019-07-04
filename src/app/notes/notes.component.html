@@ -8,6 +8,12 @@
         </button>
         Note deleted successfully!
     </div>
+    <div *ngIf="updated" class="alert alert-info" role="alert">
+      <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      Note updated successfully!
+  </div>
   </div>
   <div *ngIf="notes" class="row">
         <div *ngFor="let note of notes" class="col-md-4">
@@ -17,14 +23,21 @@
               <!--Card content-->
               <mdb-card-body>
             
-                <!--Title-->
-                <mdb-card-title>
-                  <h4>{{note.title}}</h4>
-                </mdb-card-title>
+                <div class="row">
+                  <div class="col-5">
+                    <mdb-card-text> {{note.created_at | date:'medium'}}
+                    </mdb-card-text>
+                  </div>
+        
+                  <div class="col-7">
+                    <p>
+                      <strong>{{note.title}}</strong>
+                    </p>
+                    <p>{{note.content}}</p>
+                    
+                  </div>
+                </div>
             
-                <!--Text-->
-                <mdb-card-text> {{note.content}}
-                </mdb-card-text>
             
                 <button type="button" mdbBtn color="default" (click)="openModal(note)"
   mdbWavesEffect>Edit</button>
