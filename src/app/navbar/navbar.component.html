@@ -9,9 +9,7 @@
   
       <!-- Links -->
       <ul class="navbar-nav ml-auto">
-        <!--<li class="nav-item" *ngIf="authenticationService.currentTokenValue !== null && current">
-          <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="user"></mdb-icon> {{current.name}}</a>
-        </li>-->
+        
         <li class="nav-item" *ngIf="authenticationService.currentTokenValue !== null">
           <a class="nav-link waves-light" routerLink="notes" routerLinkActive="active" mdbWavesEffect><mdb-icon fas icon="tasks"></mdb-icon> My Notes</a>
         </li>
