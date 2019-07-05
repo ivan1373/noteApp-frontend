@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="notesForm" (ngSubmit)="createNote()">
+  <form [formGroup]="notesForm" [hidden]="success" (ngSubmit)="createNote()">
     <p class="h4 mb-4">New Note</p>
     <div *ngIf="submitted" class="alert alert-success" role="alert">
       <button type="button" class="close" aria-label="Close" (click)="closeAlert()">

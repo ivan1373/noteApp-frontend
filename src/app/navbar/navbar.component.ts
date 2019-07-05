@@ -11,16 +11,19 @@ import { User } from '../model/user';
 })
 export class NavbarComponent implements OnInit {
 
+  //current: User;
 
   constructor(private router: Router,
-    public authenticationService: AuthService) {
+    private authenticationService: AuthService) {
       
      }
 
   ngOnInit() {
     
+    
   }
 
+  
 
   logoutUser() {
     this.authenticationService.logout();
@@ -28,6 +31,13 @@ export class NavbarComponent implements OnInit {
     
   }
 
-  
+  setUser() {
+    this.authenticationService.getUser()
+    .subscribe(
+      (data:User) => this.current = data,
+      error => {console.log(error)}
+      
+      );
+  }
 
 }

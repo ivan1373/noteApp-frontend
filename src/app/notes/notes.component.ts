@@ -3,8 +3,6 @@ import { NoteDataService } from '../note-data.service';
 import { Note } from '../model/note';
 import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
 import { EditNoteComponent } from '../edit-note/edit-note.component';
-import { AuthService } from '../auth.service';
-import { User } from '../model/user';
 
 @Component({
   selector: 'app-notes',
@@ -18,8 +16,6 @@ export class NotesComponent implements OnInit {
   deleted = false;
   updated = false;
 
-  currentUser: User;
-
   modalOptions = {
     backdrop: true,
     keyboard: true,
@@ -31,21 +27,13 @@ export class NotesComponent implements OnInit {
     animated: true
   }
 
-  constructor(private nds: NoteDataService, private modalService: MDBModalService, private authservice: AuthService) { }
+  constructor(private nds: NoteDataService, private modalService: MDBModalService) { }
 
   ngOnInit() {
     this.showNotes();
-    this.setUser();
   }
 
-  setUser() {
-    this.authservice.getUser()
-    .subscribe(
-      (data:User) => this.currentUser = data,
-      error => {console.log(error)}
-      
-      );
-  }
+  
 
   showNotes() {
     return this.nds.getAll().subscribe(
@@ -55,7 +43,7 @@ export class NotesComponent implements OnInit {
   }
 
   deleteNote(id: number) {
-    if(confirm('Do you want to delete this note?')){
+    if(confirm('Are you sure?')){
       this.nds.destroyNote(id).subscribe(
         data => {
           this.deleted = true;
