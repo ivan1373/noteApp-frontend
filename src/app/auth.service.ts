@@ -11,7 +11,7 @@ import { User } from './model/user';
 })
 export class AuthService {
 
-  ROOT_URL = 'http://127.0.0.1:8000/api/v1';
+  ROOT_URL = 'https://angularnote.herokuapp.com/api/v1';
   private currentTokenSubject: BehaviorSubject<Token>;
   
 

@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class NoteDataService {
-  ROOT_URL = 'http://127.0.0.1:8000/api/v1/notes';
+  ROOT_URL = 'https://angularnote.herokuapp.com/api/v1/notes';
 
   constructor(private http: HttpClient) { }
 
