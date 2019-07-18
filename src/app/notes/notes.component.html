@@ -2,7 +2,10 @@
   <div class="text-center">
     <h1>Notes List</h1>
     <br>
-    <h2 *ngIf="currentUser" style="font-style: oblique;">{{currentUser.name}}</h2>
+    <h2 *ngIf="currentUser" style="font-style: oblique;">
+      <mdb-icon fas icon="user" class="pr-3" aria-hidden="true"></mdb-icon>
+       {{currentUser.name}}
+    </h2>
     <hr>
     <a class="btn btn-primary btn-lg" routerLink="new" routerLinkActive="active">Create new</a>
     <div *ngIf="deleted" class="alert alert-danger" role="alert">
@@ -28,7 +31,7 @@
             
                 <div class="row">
                   <div class="col-5">
-                    <mdb-card-text> {{note.created_at | date:'medium'}}
+                    <mdb-card-text><mdb-icon fas icon="calendar" aria-hidden="true"></mdb-icon> {{note.created_at | date:'medium'}}
                     </mdb-card-text>
                   </div>
         
@@ -50,5 +53,4 @@
           </div>
     
   </div>
-  
 </div>
