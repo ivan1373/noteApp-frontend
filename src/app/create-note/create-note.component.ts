@@ -12,6 +12,7 @@ export class CreateNoteComponent implements OnInit {
 
   notesForm: FormGroup;
   submitted = false;
+  loading = false;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private nds: NoteDataService) { }
 
@@ -33,10 +34,12 @@ export class CreateNoteComponent implements OnInit {
       return;
     }
     
+    this.loading = true;
     
     this.nds.store(this.f.title.value, this.f.content.value).subscribe(
       data =>{
         this.submitted = true;
+        this.loading = false;
         this.notesForm.reset();
       } 
     );

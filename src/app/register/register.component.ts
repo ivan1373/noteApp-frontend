@@ -12,14 +12,16 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
 
+  loading = false;
+
   constructor(private formBuilder: FormBuilder, private router: Router, private as: AuthService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.required],
-      password_confirmation: ['', [Validators.required, Validators.minLength(6)]]
+      password_confirmation: ['', [Validators.required]]
   });
   }
 
@@ -27,8 +29,10 @@ export class RegisterComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  get f() { return this.registerForm.controls; }
+
   registerUser() {
-    console.log(this.registerForm.value);
+    this.loading = true;
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
@@ -38,12 +42,14 @@ export class RegisterComponent implements OnInit {
       .subscribe(
           data => {
               //this.alertService.success('Registration successful', true);
-              console.log('success!')
+              console.log('success!');
+              this.loading = false;
               this.router.navigate(['/login']);
           },
           error => {
               //this.alertService.error(error);
-              console.log('success! ...not!')
+              console.log('success! ...not!');
+              this.loading = false;
           });
   }
 

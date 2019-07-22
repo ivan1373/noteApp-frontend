@@ -21,4 +21,7 @@
     <button type="submit" mdbBtn color="success" class="waves-light" [disabled]="notesForm.invalid" mdbWavesEffect>Save</button>
   </div>
   </form>
+  <div *ngIf="loading" class="spinner-border text-info text-center" role="status">
+      <span class="sr-only">Loading...</span>
+  </div>
 </div>

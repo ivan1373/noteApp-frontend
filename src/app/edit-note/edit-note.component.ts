@@ -15,6 +15,8 @@ export class EditNoteComponent implements OnInit {
   notesForm: FormGroup;
   note: Note;
 
+  loading = false;
+
   modalRef: MDBModalRef;
 
   action = new Subject();
@@ -31,9 +33,12 @@ export class EditNoteComponent implements OnInit {
   get f() { return this.notesForm.controls; }
 
   editNote() {
+    this.loading = true;
+
     return this.nds.updateNote(this.f.title.value, this.f.content.value, this.note.id).subscribe((data:Note) => {
       this.note = data;
       this.action.next(true);
+      this.loading = false;
       this.hide();
     },
     error => {console.log(error);

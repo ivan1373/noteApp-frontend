@@ -18,6 +18,7 @@ export class NotesComponent implements OnInit {
   deleted = false;
   updated = false;
 
+
   currentUser: User;
 
   modalOptions = {

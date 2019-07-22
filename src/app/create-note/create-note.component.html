@@ -20,4 +20,7 @@
         <a class="indigo-text" (click)="toNotes()">Back to notes</a>
       </p>
   </form>
+  <div *ngIf="loading" class="spinner-border text-info text-center" role="status">
+      <span class="sr-only">Loading...</span>
+  </div>
 </div>
