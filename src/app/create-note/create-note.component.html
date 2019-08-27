@@ -10,10 +10,12 @@
     <div class="md-form form-group mt-5">
       <input mdbInput type="text" class="form-control" formControlName="title">
       <label for="formGroupExampleInputMD">Title</label>
+      <mdb-error *ngIf="this.f.title.hasError('required')">Title is <strong>required</strong></mdb-error>
     </div>
     <div class="md-form form-group mt-5">
         <textarea type="text" class="md-textarea form-control" mdbInput formControlName="content"></textarea>
         <label for="form7">Content</label>
+        <mdb-error *ngIf="this.f.content.hasError('required')">Content is <strong>required</strong></mdb-error>
     </div>
     <button type="submit" class="btn btn-primary btn-lg" [disabled]="notesForm.invalid">Save</button>
     <p>Changed your mind?

@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   returnUrl: any;
   loading = false;
+  error = false;
 
   constructor(private router: Router,
     private fb: FormBuilder,
@@ -51,12 +52,15 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
+                    this.error = false;
                     this.loading = false;
                     this.router.navigate([this.returnUrl]);
                 },
                 error => {
-                    console.log(error);
+                    //console.log(error);
+                    this.error = true;
                     this.loading = false;
+                    
                 });
   }
 

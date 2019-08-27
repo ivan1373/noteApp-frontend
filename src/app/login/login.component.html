@@ -6,17 +6,21 @@
           <div class="md-form">
               <input mdbInput mdbValidate type="email" class="form-control" formControlName="email">
               <label for="form1" class="">E-mail</label>
-              <mdb-error *ngIf="f.email.value.invalid && (f.email.value.dirty || f.email.value.touched)">Input invalid</mdb-error>
+              <mdb-error *ngIf="this.f.email.hasError('email') && !this.f.email.hasError('required')">Input invalid</mdb-error>
+                <mdb-error *ngIf="this.f.email.hasError('required')">Email is <strong>required</strong></mdb-error>
           </div>
       </div>
       <div class="col">
           <div class="md-form">
               <input mdbInput mdbValidate type="password" class="form-control" formControlName="password">
               <label for="form1" class="">Password</label>
-              <mdb-error *ngIf="f.password.value.invalid && (f.password.value.dirty || f.password.value.touched)">Input invalid</mdb-error>
+              <mdb-error *ngIf="this.f.password.hasError('required')">Password is <strong>required</strong></mdb-error>
           </div>
       </div>
 
+    </div>
+    <div *ngIf="error" class="text-danger text-center">
+        <h3>Wrong credentials!</h3>
     </div>
     <button type="submit" class="btn btn-primary btn-lg" [disabled]="loginForm.invalid">Login</button>
     <p>New user?
