@@ -17,7 +17,6 @@ import { JwtInterceptor } from './jwt.interceptor';
 import { ErrorInterceptor } from './auth.interceptor';
 import { NotesComponent } from './notes/notes.component';
 import { CreateNoteComponent } from './create-note/create-note.component';
-import { NoteDetailComponent } from './note-detail/note-detail.component';
 import { AuthGuard } from './auth.guard';
 import { FooterComponent } from './footer/footer.component';
 import { EditNoteComponent } from './edit-note/edit-note.component';
@@ -28,7 +27,6 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'notes', component: NotesComponent, canActivate: [AuthGuard]},
   { path: 'notes/new', component: CreateNoteComponent, canActivate: [AuthGuard]},
-  { path: 'notes/:id', component: NoteDetailComponent, canActivate: [AuthGuard]},
   { path: 'notes/:id/edit', component: EditNoteComponent, canActivate: [AuthGuard]}
 ];
 
@@ -41,7 +39,6 @@ const appRoutes: Routes = [
     HomeComponent,
     NotesComponent,
     CreateNoteComponent,
-    NoteDetailComponent,
     FooterComponent,
     EditNoteComponent
   ],
